@@ -1,0 +1,35 @@
+.header {
+  width: 1440px;
+  height: 80px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.header__name {
+  margin-left: 20px;
+}
+.header__control {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 20px;
+}
+.button {
+  width: 100px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: white;
+}
+.header__button_in {
+  border: none;
+}
+.header__button_up {
+  border: 1px solid rgba(82, 196, 26, 1);
+}
+

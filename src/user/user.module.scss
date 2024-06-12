@@ -1,0 +1,60 @@
+.user{
+  width: 390px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 6px;
+  box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.02);
+  margin-bottom: 10px;
+}
+.user h4 {
+  text-align: center;
+  margin-top: 40px;
+}
+.user form {
+  display: flex;
+  flex-direction: column;
+}
+.user form label {
+  margin-top: 5px;
+}
+.user form label input{
+  display: block;
+  width: 320px;
+  height: 40px;
+  border: 1px solid rgba(217, 217, 217, 1);
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.user__personal{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.button {
+  width: 320px;
+  height: 40px;
+  background-color: rgba(24, 144, 255, 1);
+  border-radius: 4px;
+  border: none;
+  color: white;
+}
+.user__create {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.signIn {
+  width: 390px;
+  height: 380px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px 0 
+  rgba(0, 0, 0, 0.03);
+}
+.user__create p{
+  font-size: 12px;
+  color: gray;
+}
