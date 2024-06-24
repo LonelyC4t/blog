@@ -1,8 +1,9 @@
 import style from './article.module.scss';
 const Tag = ({ tag }) => {
-  console.log(tag);
+  if (!Array.isArray(tag)) {
+    return null;
+  }
   let tags = tag.map((el, ids) => {
-    console.log(el);
     return (
       <span title={el} key={ids}>
         {el}

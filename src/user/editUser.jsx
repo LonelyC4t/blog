@@ -1,29 +1,95 @@
+/*eslint-disable*/
+import { useSelector, useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
+
 import style from './user.module.scss';
+import sendData from './sendData';
 const EditUser = () => {
+  const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm({
+    mode: 'onBlur',
+  });
+  const user = useSelector((state) => state.user);
+  const onSubmit = (data) => {
+    const userData = {
+      user: {
+        username: data.username,
+        email: data.email.toLowerCase(),
+        password: data.password,
+        image: data.avatar,
+      },
+    };
+    sendData(userData, dispatch);
+  };
   return (
     <div className={style.user}>
       <h4>Edit Profile</h4>
-      <form action="">
-        <label htmlFor="">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label>
           Username
-          <input placeholder="Username" type="text" />
+          <input
+            defaultValue={user.username}
+            placeholder="Username"
+            {...register('username', {
+              minLength: {
+                value: 3,
+                message: 'Минимум 3 символа',
+              },
+              maxLength: {
+                value: 20,
+                message: 'Max 20 символов',
+              },
+            })}
+          />
+          <span className={style.error}>{errors?.username && errors.username.message}</span>
         </label>
-        <label htmlFor="">
+        <label>
           Email address
-          <input placeholder="Email adress" type="text" />
+          <input
+            defaultValue={user.email}
+            placeholder="Email adress"
+            {...register('email', {
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                message: 'Email не очень',
+              },
+            })}
+          />
+          <span className={style.error}>{errors?.email && errors.email.message}</span>
         </label>
-        <label htmlFor="">
+        <label>
           New password
-          <input placeholder="New password" type="text" />
+          <input
+            placeholder="New password"
+            type="password"
+            {...register('password', {
+              required: "Необходимо заполнить поле",
+              minLength: {
+                value: 6,
+                message: 'min 6 символов',
+              },
+              maxLength: {
+                value: 40,
+                message: 'Max 40 символов',
+              },
+            })}
+          />
+          <span className={style.error}>{errors?.password && errors.password.message}</span>
         </label>
-        <label htmlFor="">
+        <label>
           Avatar URL
-          <input placeholder="Avatar URL" type="text" />
+          <input defaultValue={user.avatar} placeholder="Avatar URL" {...register('avatar')} />
         </label>
+        <div className={style.user__create}>
+          <button disabled={!isValid} style={{ margin: '10px' }} className={style.button}>
+            Save
+          </button>
+        </div>
       </form>
-      <div className={style.user__create}>
-        <button className={style.button}>Save</button>
-      </div>
     </div>
   );
 };

@@ -1,21 +1,15 @@
-import { useDispatch } from 'react-redux';
-
 import { api } from '../api/api';
-const getArticle = async () => {
-  let request = await api.getArticle();
+const getArticle = async (offset) => {
+  let request = await api.getArticle(offset);
   let responce = await request.json();
   return responce;
 };
-const data = () => {
-  const dispatch = useDispatch();
-  const getData = async () => {
-    try {
-      let articles = await getArticle();
-      dispatch({ type: 'load', payload: articles });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  return getData;
+const data = async (dispatch, offset) => {
+  try {
+    let articles = await getArticle(offset);
+    dispatch({ type: 'load', payload: articles });
+  } catch (err) {
+    console.log(err);
+  }
 };
 export default data;

@@ -1,0 +1,82 @@
+.article__wrapper {
+    width: 940px;
+    background-color: white;
+    box-shadow: 0 1px 15px 1px rgba($color: #bebebe, $alpha: 1.0);
+    margin-top: 30px;
+}
+h4 {
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    margin: 40px auto 0px auto;
+    display: inline-block;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+label {
+    color: rgba(38, 38, 38, 1);
+    margin-top: 10px;
+    font-weight: 600;
+}
+input {
+    display: block;
+    width: 95%;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid rgba(217, 217, 217, 1);;
+}
+.article__text {
+    height: 180px;
+    
+}
+.article__tag {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    label {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+
+        button {
+            margin-left: 15px;
+            background-color: white;
+            width: 120px;
+            height: 40px;
+            border-radius: 4px;
+        }
+    }
+    input {
+        height: 40px;
+        width: 100%;
+    }
+    p{
+        margin: 20px 0 0 0;
+    }
+    .article__tag_red {
+        border: 1px solid rgba(245, 34, 45, 1);
+    }
+    .article__tag_blue {
+        border: 1px solid rgba(24, 144, 255, 1);
+        margin-left: 100%;
+    }
+    .article__button {
+        width: 320px;
+        height: 40px;
+        color: white;
+        background-color: rgba(24, 144, 255, 1);
+        border: none;
+        border-radius: 5px;
+    }
+    .article__button:disabled {
+        background-color: rgb(68, 68, 68);
+    }
+}
+.error {
+    margin-left: 20px;
+    font-weight: 500;
+    color: red;
+}
