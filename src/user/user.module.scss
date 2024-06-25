@@ -32,6 +32,15 @@
 .user__personal{
   margin-top: 20px;
   margin-bottom: 20px;
+  display: flex;
+  input {
+    width: 20px;
+    height: 20px;
+  }
+  span {
+    width: 330px;
+    margin-left: 15px;
+  }
 }
 .button {
   width: 320px;

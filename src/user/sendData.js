@@ -2,7 +2,6 @@ import { api } from '../api/api';
 
 const sendData = async (info, dispatch, setError) => {
   if (Object.keys(info.user).length === 3) {
-    console.log('L3');
     try {
       let request = await api.createProfile(info);
       if (!request.ok) {
@@ -18,7 +17,6 @@ const sendData = async (info, dispatch, setError) => {
     }
   }
   if (Object.keys(info.user).length === 2) {
-    console.log('L2');
     try {
       let request = await api.logIn(info);
       if (!request.ok) {
@@ -42,9 +40,7 @@ const sendData = async (info, dispatch, setError) => {
     }
   }
   if (Object.keys(info.user).length === 4) {
-    console.log('L4');
-    let token = localStorage.getItem('token');
-    let request = await api.updateUser(info, token);
+    let request = await api.updateUser(info);
     let responce = await request.json();
     const user = {
       username: responce.user.username,
@@ -52,7 +48,6 @@ const sendData = async (info, dispatch, setError) => {
       avatar: responce.user.image,
     };
     dispatch({ type: 'user', payload: user });
-    console.log(responce);
   }
 };
 export default sendData;

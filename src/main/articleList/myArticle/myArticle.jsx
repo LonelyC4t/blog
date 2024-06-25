@@ -1,25 +1,23 @@
-/*eslint-disable*/
 import { useForm, useFieldArray } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
+import getPost from '../getPost';
+
 import style from './myArticle.module.scss';
 import sendData from './sendData';
-import getPost from '../getPost';
 
 const MyArticle = () => {
   const navigate = useNavigate();
-  const {id} = useParams()
-  
+  const { id } = useParams();
   const [error, setError] = useState(null);
   const location = useLocation();
-  
   const {
     register,
     handleSubmit,
     control,
     setValue,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm({
     mode: 'onBlur',
   });
@@ -32,22 +30,19 @@ const MyArticle = () => {
   };
 
   useEffect(() => {
-    if(location.pathname.includes('edit')) {
-      const getData = async() => {
+    if (location.pathname.includes('edit')) {
+      const getData = async () => {
         const data = await getPost(id);
         setValue('title', data.article.title);
         setValue('description', data.article.description);
         setValue('text', data.article.body);
-        data.article.tagList.forEach(tag => {
-          console.log();
+        data.article.tagList.forEach((tag) => {
           append({ value: tag });
         });
       };
       getData();
-      
-    };
-  }, [location.pathname])
-  
+    }
+  }, [location.pathname]);
   return (
     <article>
       <div className={style.article__wrapper}>
@@ -73,7 +68,6 @@ const MyArticle = () => {
           <label>
             Short description
             <input
-              
               placeholder="Short description"
               {...register('description', {
                 required: 'Обязательно к заполнению',
@@ -109,9 +103,7 @@ const MyArticle = () => {
                 </button>
               </div>
             </label>
-            <button  className={style.article__button}>
-              Send
-            </button>
+            <button className={style.article__button}> Send </button>
           </div>
         </form>
       </div>

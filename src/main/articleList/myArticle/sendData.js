@@ -1,7 +1,6 @@
 import { api } from '../../../api/api';
 
 const sendData = async (data, setError, navigate, id) => {
-  let token = localStorage.getItem('token');
   if (id) {
     try {
       const tags = data.tags.map((tag) => tag.value).filter(Boolean);
@@ -13,7 +12,7 @@ const sendData = async (data, setError, navigate, id) => {
           tagList: tags,
         },
       };
-      const request = await api.updateArticle(id, token, articleData);
+      const request = await api.updateArticle(id, articleData);
       if (request.ok) {
         setError(null);
         navigate('/');
@@ -29,7 +28,6 @@ const sendData = async (data, setError, navigate, id) => {
   if (!id) {
     try {
       const tags = data.tags.map((tag) => tag.value).filter(Boolean);
-      console.log('data');
       const articleData = {
         article: {
           title: data.title,
@@ -38,7 +36,7 @@ const sendData = async (data, setError, navigate, id) => {
           tagList: tags,
         },
       };
-      let request = await api.createArticle(articleData, token);
+      let request = await api.createArticle(articleData);
       if (request.ok) {
         setError(null);
         navigate('/');

@@ -5,11 +5,14 @@ const getArticle = async (offset) => {
   return responce;
 };
 const data = async (dispatch, offset) => {
+  dispatch({ type: 'spin', payload: true });
   try {
     let articles = await getArticle(offset);
     dispatch({ type: 'load', payload: articles });
   } catch (err) {
-    console.log(err);
+    console.error(err);
+  } finally {
+    dispatch({ type: 'spin', payload: false });
   }
 };
 export default data;

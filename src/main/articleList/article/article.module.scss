@@ -7,6 +7,7 @@
   background-color: white;
   box-shadow: 0 4px 12px 0  rgba(0, 0, 0, 0.15);
   margin: 10px;
+  cursor: default;
 }
 .article__header {
   display: flex;
@@ -19,6 +20,7 @@
   justify-content: start;
 }
 .article__header_left p {
+  cursor: pointer;
   color: rgba(24, 144, 255, 1);
   font-size: 20px;
   font-family: serif;
@@ -26,6 +28,18 @@
 }
 .article__header_left span{
   margin-left: 5px;
+}
+.article__header_left button{
+  cursor: pointer;
+  background-color: white;
+  border: none;
+}
+.article__header_left button:disabled{
+  cursor: help;
+}
+.article__header_left button:disabled {
+  background-color: gray;
+  border-radius: 10%;
 }
 .article__tag {
   display: flex;
@@ -81,7 +95,7 @@
 }
 .article__text {
   width: 685px;
-  height: 45px;
+  height: 55px;
   font-size: 12px;
   line-height: 22px;
   color: rgba(0, 0, 0, 0.75);
@@ -97,6 +111,9 @@
 .article__body {
   width: 100%;
   margin-left: 20px;
+}
+.article__control {
+  position: relative;
 }
 .article__control button{
   background-color: white;
@@ -114,4 +131,35 @@
 .article__control button:last-child  {
   border: 1px solid rgba(82, 196, 26, 1);
   color: rgba(82, 196, 26, 1);
+}
+.modal {
+  position: absolute;
+  top: 120%;
+  left: -190%;
+  width: 240px;
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 12px 3px gray;
+  p {
+    font-size: 16px;
+    font-family: monospace;
+  }
+  .modalContent {
+    margin: 10px;
+  }
+  .modalButton {
+    margin-bottom: 10px;
+  }
+  .modalButton button:first-child {
+    border: 1px solid rgba(82, 196, 26, 1);
+    color: rgba(82, 196, 26, 1);;
+  }
+  .modalButton button:last-child {
+    border: 1px solid rgba(245, 34, 45, 1);
+    color: rgba(245, 34, 45, 1);
+  }
 }

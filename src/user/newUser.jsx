@@ -1,4 +1,3 @@
-/*eslint-disble*/
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
@@ -110,8 +109,8 @@ const NewUser = () => {
             })}
           />
           <span>I agree to the processing of my personal information</span>
-          <p className={style.error}>{errors?.agree && errors.agree.message}</p>
         </div>
+        {errors?.agree ? <p className={style.error}>{errors?.agree && errors.agree.message}</p> : null}
         <div className={style.user__create}>
           <button className={style.button} disabled={!isValid} type="submit">
             Create

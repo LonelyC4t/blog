@@ -13,6 +13,7 @@
 }
 .header__name {
   margin-left: 20px;
+  cursor: pointer;
 }
 .header__control {
   display: flex;
@@ -25,6 +26,7 @@
   height: 50px;
   border-radius: 5px;
   background-color: white;
+  cursor: pointer;
 }
 .header__button_in {
   border: none;
@@ -43,8 +45,10 @@
     margin: 10px;
     object-fit: cover;
     object-position: center;
+    cursor: pointer;
   }
   button {
+    cursor: pointer;
     margin: 10px;
     width: 115px;
     height: 35px;
@@ -52,6 +56,9 @@
     border: 1px solid  rgba(82, 196, 26, 1);
     background-color: white;
     border-radius: 5px;
+  }
+  span {
+    cursor: pointer;
   }
 }
 

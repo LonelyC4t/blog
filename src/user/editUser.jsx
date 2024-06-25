@@ -1,10 +1,12 @@
-/*eslint-disable*/
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import style from './user.module.scss';
 import sendData from './sendData';
+
 const EditUser = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const {
     register,
@@ -24,6 +26,7 @@ const EditUser = () => {
       },
     };
     sendData(userData, dispatch);
+    navigate('/');
   };
   return (
     <div className={style.user}>
@@ -41,7 +44,7 @@ const EditUser = () => {
               },
               maxLength: {
                 value: 20,
-                message: 'Max 20 символов',
+                message: 'Maкимум 20 символов',
               },
             })}
           />
@@ -67,14 +70,14 @@ const EditUser = () => {
             placeholder="New password"
             type="password"
             {...register('password', {
-              required: "Необходимо заполнить поле",
+              required: 'Необходимо заполнить поле',
               minLength: {
                 value: 6,
-                message: 'min 6 символов',
+                message: 'Минимум 6 символов',
               },
               maxLength: {
                 value: 40,
-                message: 'Max 40 символов',
+                message: 'Минимум 40 символов',
               },
             })}
           />
