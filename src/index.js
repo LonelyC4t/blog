@@ -6,29 +6,32 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { store } from '../src/data/store';
 
 import './index.css';
-//import App from '../src/app/App';
 import SignIn from './user/signIn';
-import NewUser from './user/newUser';
 import App from './app/App';
 import OpenArticle from './main/articleList/article/openArticle';
-import EditUser from './user/editUser';
+import ActionUser from './user/actionUser';
 import MyArticle from './main/articleList/myArticle/myArticle';
+import Main from './main/main';
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     children: [
       {
+        path: '/',
+        element: <Main />,
+      },
+      {
         path: 'sign-in',
         element: <SignIn />,
       },
       {
         path: 'sign-up',
-        element: <NewUser />,
+        element: <ActionUser />,
       },
       {
         path: 'profile',
-        element: <EditUser />,
+        element: <ActionUser />,
       },
       {
         path: 'article/:id',

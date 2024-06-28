@@ -1,6 +1,7 @@
 import { api } from '../api/api';
 
-const getUser = async (token, dispatch) => {
+const getUser = async (dispatch) => {
+  const token = localStorage.getItem('token');
   const request = await api.getUser(token);
   const responce = await request.json();
   const user = {

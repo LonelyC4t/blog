@@ -1,22 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import userImg from '../image/user.svg';
 
 import style from './header.module.scss';
-import getUser from './data';
 
 const Header = () => {
   const user = useSelector((state) => state.user);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
-  useEffect(() => {
-    if (token && user.username === '') {
-      getUser(token, dispatch);
-    }
-  }, [user.username, token]);
   const logOut = () => {
     localStorage.removeItem('token');
     navigate('sign-in');
